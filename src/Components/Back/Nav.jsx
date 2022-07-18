@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Nav() {
   return (
     <>
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col-12">
             <nav className="nav">
