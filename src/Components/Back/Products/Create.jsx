@@ -78,8 +78,9 @@ function Create() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-          <div className="form-group">
-            <label>Upload clothing photo</label>
+          
+          <div className="form-group photo-input">
+          <label>Upload clothing photo</label>
             <input
               ref={fileInput}
               type="file"
@@ -93,9 +94,11 @@ function Create() {
             </div>
           ) : null}
           <div>
+            <div className="create-button">
             <button className="btn addButton" onClick={addClothing}>
               Add clothing
             </button>
+            </div>
           </div>
         </div>
       </div>
