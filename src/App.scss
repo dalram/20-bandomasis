@@ -120,7 +120,9 @@ body {
       }
   }
 }
-
+.margin-bot {
+  margin-bottom: 10px;
+}
 .list-group-item {
   .item-front {
       display: flex;
@@ -326,7 +328,7 @@ $color: rgb(20, 154, 212);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 $colorred: crimson;
@@ -433,4 +435,12 @@ $colorred: crimson;
   input {
     margin: 10px 0 10px 0;
   }
+}
+.color-kv {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.line-img {
+  max-width: 150px;
 }
