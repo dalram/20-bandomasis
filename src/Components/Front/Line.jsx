@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import BackContext from "../BackContext";
+import FrontContext from "./FrontContext";
 
 const Line = ({ product }) => {
-  const { setDeleteProduct, setModalProduct } = useContext(BackContext);
+  const { setDeleteProduct, setModalProduct } = useContext(FrontContext);
   const handleDelete = () => {
     setDeleteProduct(product);
   };

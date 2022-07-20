@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import Orders from "./Orders/Orders";
 import ProductsCrud from "./Products/Crud";
 import axios from 'axios';
+import { authConfig } from "../../Functions/auth";
 
 function Back({ show }) {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -20,15 +21,14 @@ function Back({ show }) {
     if (createData === null) {
       return;
     }
-    axios.post("http://localhost:3003/admin/products", createData).then((res) => {
+    axios.post("http://localhost:3003/admin/products", createData, authConfig()).then((res) => {
       setLastUpdate(Date.now());
     });
   }, [createData]);
 // Read products
 useEffect(() => {
-  axios.get("http://localhost:3003/admin/products").then((res) => {
+  axios.get("http://localhost:3003/admin/products", authConfig()).then((res) => {
     setProducts(res.data);
-    console.log(products);
   });
 }, [lastUpdate]);
 
@@ -37,12 +37,21 @@ useEffect(() => {
   if (null === deleteProduct) {
     return;
   }
-  axios.delete("http://localhost:3003/admin/products/" + deleteProduct.id).then((res) => {
+  axios.delete("http://localhost:3003/admin/products/" + deleteProduct.id, authConfig()).then((res) => {
     setLastUpdate(Date.now());
   })
 }, [deleteProduct]);
 
 // edit product
+
+useEffect(() => {
+  if (null === editProduct) {
+    return;
+  }
+  axios.put("http://localhost:3003/admin/products/" + editProduct.id, editProduct, authConfig()).then((res) => {
+    setLastUpdate(Date.now());
+  });
+}, [editProduct]);
 
   return (
     <BackContext.Provider value={{
