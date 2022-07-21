@@ -2,14 +2,11 @@ import { useContext } from "react";
 import FrontContext from "./FrontContext";
 
 const Line = ({ product }) => {
-  const { setDeleteProduct, setModalProduct } = useContext(FrontContext);
-  const handleDelete = () => {
-    setDeleteProduct(product);
-  };
+  const { setModalProduct } = useContext(FrontContext);
 
-  const handleEdit = () => {
+  const handleOrder = () => {
     setModalProduct(product);
-    // console.log(product);
+    console.log(product);
   };
 
   return (
@@ -27,11 +24,8 @@ const Line = ({ product }) => {
             product.photo === null ? null : <img src={product.photo} alt={product.type} className='line-img'/>
           }
           <div className="item-buttons">
-            <button className="btn" onClick={handleEdit}>
-              Edit
-            </button>
-            <button className="btn red-button" onClick={handleDelete}>
-              Delete
+            <button className="btn" onClick={handleOrder}>
+              Order this product
             </button>
           </div>
         </div>

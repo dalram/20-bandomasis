@@ -250,6 +250,19 @@ button.with-loader:disabled {
   flex-wrap: wrap;
 }
 
+.list-box-front {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+}
+.orders-box {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+}
+
+
 .square {
   display: flex;
   align-items: center;
@@ -262,8 +275,16 @@ button.with-loader:disabled {
   
 }
 button,
-input {
+input,
+textarea,
+select {
   margin: 10px;
+}
+textarea {
+  min-width: 250px;
+  min-height: 150px;
+  max-width: 500px;
+  max-height: 300px;
 }
 .kvc {
   display: flex;
@@ -326,7 +347,7 @@ $color: rgb(20, 154, 212);
 .item,
 .item-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;

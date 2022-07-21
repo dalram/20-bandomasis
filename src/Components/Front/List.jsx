@@ -5,7 +5,7 @@ import Line from "./Line";
 function List() {
     const { products } = useContext(FrontContext);
     return (
-        <div className="list-box">
+        <div className="list-box-front">
         <div className="list-header">
           <h2>List of Products</h2>
         </div>
