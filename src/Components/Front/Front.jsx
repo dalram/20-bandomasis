@@ -8,6 +8,7 @@ import OrderModal from "./OrderModal";
 function Front() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [products, setProducts] = useState(null);
+  const [orders, setOrders] = useState(null);
   const [modalProduct, setModalProduct] = useState(null);
   const [orderProduct, setOrderProduct] = useState(null);
   useEffect(() => {
@@ -17,6 +18,28 @@ function Front() {
         setProducts(res.data);
       });
   }, [lastUpdate]);
+
+
+  // Create order
+
+  useEffect(() => {
+    if (orderProduct === null) {
+      return;
+    }
+    axios.post("http://localhost:3003/front/order", orderProduct, authConfig()).then((res) => {
+      setLastUpdate(Date.now());
+    });
+  }, [orderProduct]);
+
+  // Read orders
+
+  useEffect(() => {
+    axios.get("http://localhost:3003/front/orders", authConfig()).then((res) => {
+      console.log(res.data);
+      setOrders(res.data);
+    });
+  }, [lastUpdate]);
+
   return (
     <FrontContext.Provider
       value={{
@@ -24,6 +47,7 @@ function Front() {
         setModalProduct,
         modalProduct,
         setOrderProduct,
+        orders
       }}
     >
       <div className="container">

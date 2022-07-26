@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import FrontContext from "./FrontContext";
+import OrdersLine from "./OrdersLine";
 
 
 function OrdersList() {
-    const { a } = useContext(FrontContext);
+    const { orders } = useContext(FrontContext);
     return (
         <div className="orders-box">
         <div className="list-header">
@@ -11,7 +12,9 @@ function OrdersList() {
         </div>
         <div className="card-body">
           <ul className="list-group">
-           
+           {
+            orders ? orders.map(order => <OrdersLine order={order} key={order.id}></OrdersLine>) : null
+           }
           </ul>
         </div>
       </div>

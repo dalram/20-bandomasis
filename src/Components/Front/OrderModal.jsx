@@ -5,24 +5,20 @@ import getBase64 from "../../Functions/getBase64";
 const OrderModal = () => {
   const { setOrderProduct, setModalProduct, modalProduct } =
     useContext(FrontContext);
-  const [size, setSize] = useState('2');
+  const [size, setSize] = useState('3');
   const [comment, setComment] = useState("");
-  const [clothingType, setClothingType] = useState("");
-  const [price, setPrice] = useState("");
-  const [photoPrint, setPhotoPrint] = useState(null);
-  const fileInput = useRef();
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 
   const handleOrder = () => {
     const data = {
-      size: sizes[size],
+      size: sizes[size - 1],
       comment: !!comment ? comment : null,
       product_id: modalProduct.id,
     };
     // console.log(parseInt(price));
     // console.log(parseFloat(price));
-    // setOrderProduct(data);
+    setOrderProduct(data);
     setModalProduct(null);
     console.log(data);
     setComment('');
@@ -54,7 +50,7 @@ const OrderModal = () => {
                 >
                   <option value="0" disabled>Select size</option>
                   {
-                    sizes.map((size, i) => <option key={i} value={i}>{size}</option>)
+                    sizes.map((size, i) => <option key={i + 1} value={i + 1}>{size}</option>)
                   }
 
                 </select>
