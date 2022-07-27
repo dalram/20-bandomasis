@@ -14,7 +14,9 @@ function Back({ show }) {
   const [deleteProduct, setDeleteProduct] = useState(null);
   const [editProduct, setEditProduct] = useState(null);
   const [modalProduct, setModalProduct] = useState(null);
-
+  // Orders
+  const [orders, setOrders] = useState(null);
+  const [handleOrder, setHandleOrder] = useState(null);
 
 // Create
   useEffect(() => {
@@ -53,6 +55,25 @@ useEffect(() => {
   });
 }, [editProduct]);
 
+// Read orders
+
+useEffect(() => {
+  axios.get("http://localhost:3003/admin/orders", authConfig()).then((res) => {
+    setOrders(res.data);
+  });
+}, [lastUpdate]);
+
+// Edit, confirm or cancel order
+
+useEffect(() => {
+  if (null === handleOrder) {
+    return;
+  }
+  axios.put("http://localhost:3003/admin/orders/" + handleOrder.id, handleOrder, authConfig()).then((res) => {
+    setLastUpdate(Date.now());
+  });
+}, [handleOrder]);
+
   return (
     <BackContext.Provider value={{
       setCreateData,
@@ -61,7 +82,9 @@ useEffect(() => {
       setEditProduct,
       setModalProduct,
       editProduct,
-      modalProduct
+      modalProduct,
+      orders,
+      setHandleOrder
     }}>
       {show === "admin" ? (
         <>

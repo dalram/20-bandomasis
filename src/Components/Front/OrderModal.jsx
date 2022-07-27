@@ -22,7 +22,7 @@ const OrderModal = () => {
     setModalProduct(null);
     console.log(data);
     setComment('');
-    setSize('2');
+    setSize('3');
   };
   if (null === modalProduct) {
     return null;

@@ -5,17 +5,19 @@ import List from "./List";
 import { authConfig } from "../../Functions/auth";
 import OrdersList from "./OrdersList";
 import OrderModal from "./OrderModal";
+import Nav from "./Nav";
 function Front() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [products, setProducts] = useState(null);
   const [orders, setOrders] = useState(null);
   const [modalProduct, setModalProduct] = useState(null);
   const [orderProduct, setOrderProduct] = useState(null);
+  // Read products
   useEffect(() => {
     axios
       .get("http://localhost:3003/front/products", authConfig())
       .then((res) => {
-        setProducts(res.data);
+        setProducts(res.data.map((element, i) => ({...element, show: true, row: i})));
       });
   }, [lastUpdate]);
 
@@ -35,7 +37,7 @@ function Front() {
 
   useEffect(() => {
     axios.get("http://localhost:3003/front/orders", authConfig()).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setOrders(res.data);
     });
   }, [lastUpdate]);
@@ -50,6 +52,7 @@ function Front() {
         orders
       }}
     >
+      <Nav/>
       <div className="container">
         <List></List>
         <OrdersList />

@@ -1,7 +1,11 @@
+
+import OrdersList from "./OrdersList";
+
 function Orders() {
+
     return (
-        <div>
-            Orders
+        <div className="container">
+            <OrdersList />
         </div>
     )
 }

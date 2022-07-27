@@ -19,29 +19,6 @@ function Nav() {
               </NavLink>
               <NavLink
                 className="nav-link"
-                to="/admin/orders"
-                style={({ isActive }) =>
-                  isActive ? { color: "crimson" } : null
-                }
-              >
-                Orders
-              </NavLink>
-              <NavLink
-                className="nav-link"
-                to="/admin/products"
-                style={({ isActive }) =>
-                  isActive ? { color: "crimson" } : null
-                }
-              >
-                Products
-              </NavLink>
-              <NavLink
-                className="nav-link"
-                to="/">
-                Front
-              </NavLink>
-              <NavLink
-                className="nav-link"
                 to="/logout">
                 Logout
               </NavLink>
