@@ -56,7 +56,7 @@ useEffect(() => {
 }, [editProduct]);
 
 // Read orders
-
+// const {data} = props; Tai yra Destrukturizavimas objekto!!!
 useEffect(() => {
   axios.get("http://localhost:3003/admin/orders", authConfig()).then((res) => {
     setOrders(res.data);
